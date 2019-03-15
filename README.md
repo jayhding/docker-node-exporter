@@ -1,4 +1,6 @@
-# basi/node-exporter
+# node-exporter
+
+Forked from basi/node-exporter
 
 It is a simple node-exporter image that adds the capability of obtain the host hostname and expose it as a value in the container.
 
@@ -25,3 +27,7 @@ This mount is used by the container to obtain the hostname of the host where the
 
 It can be useful to use this value in a swarm cluster when obtaining data in Prometheus, while it does not support
 swarm mode natively.
+
+## Grafana
+
+With original version, Grafan will still shows inactive hosts in host dropdown list. By setting the real hostname as file name at `/etc/node-exporter/$host_hostname.prom`, quering `label_values(node_textfile_mtime,file)` in Grafana can show hostnames only from running hosts.
